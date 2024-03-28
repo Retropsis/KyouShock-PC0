@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "Animation/AnimInstance.h"
+#include "Player/CharacterData.h"
 #include "CharacterAnimInstance.generated.h"
 
 class APlayerCharacter;
@@ -33,4 +34,7 @@ public:
 	
 	UPROPERTY(BlueprintReadOnly, Category="Character|Movement")
 	bool bIsCrouched = false;
+
+	UPROPERTY(BlueprintReadOnly, Category="Character|Movement")
+	ECharacterState CharacterState;
 };

@@ -43,7 +43,7 @@ public:
 	UPROPERTY(BlueprintReadOnly)
 	TObjectPtr<AAIController> NPCController;
 	
-	UPROPERTY(EditInstanceOnly, Category="NPC|Navigation")
+	UPROPERTY(EditInstanceOnly, BlueprintReadOnly, Category="NPC|Navigation")
 	TObjectPtr<AActor> CurrentNavigationPoint;
 
 	UPROPERTY(EditInstanceOnly, Category="NPC|Navigation")
@@ -59,11 +59,12 @@ public:
 	FTimerHandle NavigationTimer;
 	void NavigationTimerFinished();
 	
+	
 protected:
 	virtual void BeginPlay() override;
 
 	bool WithinRange(const AActor* ToPoint, double Radius);
-	void MoveToNavPoint(const AActor* NavPoint);
+	UFUNCTION(BlueprintCallable) void MoveToNavPoint(const AActor* NavPoint);
 	AActor* SelectNextNavigationPoint();
 
 public:

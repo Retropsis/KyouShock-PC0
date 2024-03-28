@@ -3,6 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "CharacterData.h"
 #include "GameFramework/Character.h"
 #include "PlayerCharacter.generated.h"
 
@@ -37,7 +38,11 @@ private:
 	TObjectPtr<USpringArmComponent> SpringArm;
 
 	TObjectPtr<UCharacterAnimInstance> CharacterAnimInstance;
+
+	ECharacterState CharacterState = ECharacterState::ECS_Unoccupied;
 	
 public:
 	FORCEINLINE void SetOverlappingItem(AWorldItem* Item) { OverlappingItem = Item; }
+	FORCEINLINE ECharacterState GetCharacterState() const { return CharacterState; }
+	UFUNCTION(BlueprintCallable) void SetCharacterState(const ECharacterState NewState) { CharacterState = NewState; }
 };

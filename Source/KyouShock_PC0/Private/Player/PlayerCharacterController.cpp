@@ -31,7 +31,7 @@ void APlayerCharacterController::BeginPlay()
 void APlayerCharacterController::Move(const FInputActionValue& InputActionValue)
 {
 	// TODO: Make Additive Attacks instead of pinning
-	// if(PlayerCharacter->GetActionState() != EActionState::EAS_Unoccupied) return;
+	if(PlayerCharacter->GetCharacterState() != ECharacterState::ECS_Unoccupied) return;
 	
 	const FVector2D InputAxisVector = InputActionValue.Get<FVector2D>();
 	const FRotator Rotation = GetControlRotation();
